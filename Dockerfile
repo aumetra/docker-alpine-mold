@@ -17,7 +17,7 @@ RUN make -j$(nproc) CXX=clang++
 FROM alpine:latest
 
 # Install clang because the Rust configuration will invoke it at link time
-RUN apk add --no-cache --update clang build-base
+RUN apk add --no-cache --update clang build-base tar
 COPY --from=build /build/mold /usr/local/bin/mold
 COPY rust-config.toml ~/.cargo/config.toml
 
